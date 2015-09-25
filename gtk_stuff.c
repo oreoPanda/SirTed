@@ -1,6 +1,7 @@
 /*window setup*/
 
 GtkWidget *window = NULL, *grid = NULL, *button = NULL, *drawing_area = NULL;
+static cairo_surface_t *surface = NULL;
 
 void create_window(void)
 {
@@ -37,7 +38,7 @@ void create_drawing_area(void)
 {
 	drawing_area = gtk_drawing_area_new();
 
-	gtk_widget_set_size_request( drawing_area, GAMEWIDTH*20, GAMEHEIGHT*20 );
+	gtk_widget_set_size_request( drawing_area, GAMEWIDTH*BASE, GAMEHEIGHT*BASE );
 
 	return;
 }
@@ -53,9 +54,85 @@ void populate_window(void)
 }
 
 /*callback functions and event handles*/
-void draw_falling_block(void)
+
+static void clear_surface(void)
 {
 	cairo_t *cr;
+
+	cr = cairo_create(surface);
+
+	cairo_set_source_rgb( cr, 1, 1, 1 );
+	cairo_paint(cr);
+
+	cairo_destroy(cr);X
+
+	return;Y
 }
 
-redraw_falling_block
+gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *event, gpointer data )
+{
+	//useless, but it's in the tutorial so I do it!
+	if(surface)
+	{
+		cairo_surface_destroy(surface);
+	}
+
+	surface = gdk_window_create_similar_surface( gtk_widget_get_window(widget),
+							CAIRO_CONTENT_COLOR,
+							gtk_widget_get_allocated_width(widget),
+							gtk_widget_get_allocated_height(widget) );
+
+	clear_surface();
+
+	//event handled, remove source
+	return TRUE;
+}
+
+//will return FALSE if ready_to_draw has not been called yet
+gboolean draw_falling_block(void)
+{
+	cairo_t *cr;
+
+	double x = falling.pos[x] * GAMEWIDTH;
+	double y = falling.pos[y] * GAMEHEIGHT;
+	double width = BASE;
+	int height = BASE;
+
+	//in case configure event did not happen yet
+	if( surface == NULL )
+	{
+		return FALSE;
+	}
+
+	cr = cairo_create(surface);
+	cairo_set_source_rgb( cr, 0, 0, 0 );
+	cairo_rectangle( cr, x, y, width, height );
+
+	cairo_destroy(cr);
+
+	return TRUE;
+}
+
+gboolean erase_falling_block(void)
+{
+	cairo_t *cr;
+
+	double x = falling.pos[x] * GAMEWIDTH;
+	double y = falling.pos[y] * GAMEHEIGHT;
+	double width = BASE;
+	int height = BASE;
+
+	//in case configure event did not happen yet
+	if( surface == NULL )
+	{
+		return FALSE;
+	}
+
+	cr = cairo_create(surface);
+	cairo_set_source_rgb( cr, 1, 1, 1 );
+	cairo_rectangle( cr, x, y, width, height );
+
+	cairo_destroy(cr);
+
+	return TRUE;
+}
