@@ -1,10 +1,12 @@
+/*window setup*/
+
 void create_window(void)
 {
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title( GTK_WINDOW (window), "Window" );
 	gtk_window_set_position( GTK_WINDOW(window), GTK_WIN_POS_CENTER );
 
-	g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+	g_signal_connect(window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
 
 	gtk_widget_show(window);
 
@@ -29,11 +31,26 @@ void create_button(void)
 	return;
 }
 
+void create_drawing_area(void)
+{
+	drawing_area = gtk_drawing_area_new();
+
+	gtk_widget_set_size_request( drawing_area, WIDTH*20, HEIGHT*20 );
+
+	return;
+}
+
 void populate_window(void)
 {
 	gtk_container_add( GTK_CONTAINER(window), grid );
 
-	gtk_grid_attach( GTK_GRID(grid), button, 0, 0, 1, 1 );
+	gtk_grid_attach( GTK_GRID(grid), drawing_area, 0, 0, 10, 10 );
+	gtk_grid_attach( GTK_GRID(grid), button, 1, 0, 1, 1 );
 
 	return;
 }
+
+/*callback functions and event handles*/
+draw_falling_block
+
+redraw_falling_block
