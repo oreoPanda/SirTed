@@ -10,13 +10,6 @@
 #define GAMEWIDTH 10
 #define GAMEHEIGHT 18
 
-struct block
-{
-	BLOCK type;
-	unsigned short int pos[2];
-	unsigned short int rotation;
-};
-
 typedef enum
 {
 	BLOCK_t,
@@ -25,8 +18,15 @@ typedef enum
 	BLOCK_line,
 	BLOCK_s,
 	BLOCK_z,
-	BLOCK_l_mirror;
+	BLOCK_l_mirror
 }BLOCK;
+
+struct block
+{
+	BLOCK type;
+	unsigned short int pos[2];
+	unsigned short int rotation;
+};
 
 int game_area[GAMEWIDTH][GAMEHEIGHT];
 struct block falling;
@@ -82,8 +82,7 @@ gboolean drop_control(gpointer data)
 	return G_SOURCE_CONTINUE;
 }
 
-int
-main (int argc, char *argv[])
+int main (int argc, char *argv[])
 {
 	gtk_init (&argc, &argv);
 
