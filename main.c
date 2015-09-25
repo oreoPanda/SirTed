@@ -58,8 +58,14 @@ gboolean drop_control(gpointer data)
 	
 	if (game_area[x_pos][i+1] == 0)
 	{
-		falling.pos[Y]++; 
-		redraw();
+		falling.pos[Y]++;
+ 
+		erase_falling_block();
+
+		if (draw_falling_block == FALSE) 
+		{
+			return G_SOURCE_CONTINUE; 
+		}
 		i++; 
 	} 
 	
