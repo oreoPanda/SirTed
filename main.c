@@ -13,9 +13,6 @@
 #define TRUE 1
 #define FALSE 0 
 
-
-GtkWidget *window = NULL, *grid = NULL, *button = NULL;
-
 gboolean drop_control(gpointer data)
 {
 	static gboolean first_call = TRUE; 
