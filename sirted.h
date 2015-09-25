@@ -5,6 +5,8 @@
 #define Y 1
 
 #define BASE
+#undef BASE
+#define BASE 20
 
 typedef enum
 {
