@@ -4,6 +4,8 @@
 #define X 0
 #define Y 1
 
+#define BASE
+
 typedef enum
 {
 	BLOCK_t,
