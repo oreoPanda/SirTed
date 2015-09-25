@@ -29,7 +29,7 @@ struct block
 	unsigned short int pos[2];
 	unsigned short int rotation;
 };
-struct block falling = NULL;
+struct block falling;
 
 
 void create_window(void)
