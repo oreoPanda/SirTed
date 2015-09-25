@@ -44,8 +44,8 @@ gboolean drop_control(gpointer data)
 		else
 		{
 			falling.type = block_next; 
-			falling.pos[0] = {5};
-			falling.pos[1] = {0}; 
+			falling.pos[X] = {5};
+			falling.pos[Y] = {0}; 
 			falling.rotation = 0; 	
 		}	
 		block_next = rand()%BLOCK_number; 
@@ -56,11 +56,12 @@ gboolean drop_control(gpointer data)
 		return G_SOURCE_CONTINUE;
 	} 
 	
-	if (falling.pos[i-1] == 0)
+	if (game_area[x_pos][i+1] == 0)
 	{
-		falling.pos[1]--; 
-		redraw(); 
-	}
+		falling.pos[Y]++; 
+		redraw();
+		i++; 
+	} 
 	
 	return G_SOURCE_CONTINUE;
 }
