@@ -1,5 +1,7 @@
 /*window setup*/
 
+GtkWidget *window = NULL, *grid = NULL, *button = NULL, *drawing_area = NULL;
+
 void create_window(void)
 {
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -35,7 +37,7 @@ void create_drawing_area(void)
 {
 	drawing_area = gtk_drawing_area_new();
 
-	gtk_widget_set_size_request( drawing_area, WIDTH*20, HEIGHT*20 );
+	gtk_widget_set_size_request( drawing_area, GAMEWIDTH*20, GAMEHEIGHT*20 );
 
 	return;
 }
@@ -51,6 +53,9 @@ void populate_window(void)
 }
 
 /*callback functions and event handles*/
-draw_falling_block
+void draw_falling_block(void)
+{
+	cairo_t *cr;
+}
 
 redraw_falling_block
