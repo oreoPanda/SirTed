@@ -10,9 +10,13 @@
 #define GAMEWIDTH 10
 #define GAMEHEIGHT 18
 
-GtkWidget *window = NULL, *grid = NULL, *button = NULL;
+struct block
+{
+	BLOCK type;
+	unsigned short int pos[2];
+	unsigned short int rotation;
+};
 
-int game_area[GAMEWIDTH][GAMEHEIGHT];
 typedef enum
 {
 	BLOCK_t,
@@ -23,13 +27,12 @@ typedef enum
 	BLOCK_z,
 	BLOCK_l_mirror;
 }BLOCK;
-struct block
-{
-	BLOCK type;
-	unsigned short int pos[2];
-	unsigned short int rotation;
-};
-struct block falling = NULL;
+
+int game_area[GAMEWIDTH][GAMEHEIGHT];
+struct block falling;
+struct block next;
+
+GtkWidget *window = NULL, *grid = NULL, *button = NULL;
 
 
 void create_window(void)
@@ -68,6 +71,15 @@ void populate_window(void)
 	gtk_container_add( GTK_CONTAINER(window), grid );
 
 	gtk_grid_attach( GTK_GRID(grid), button, 0, 0, 1, 1 );
+
+	return;
+}
+
+gboolean drop_control(gpointer data)
+{
+	printf("Controlling drop!\n");
+
+	return G_SOURCE_CONTINUE;
 }
 
 int
@@ -79,6 +91,8 @@ main (int argc, char *argv[])
 	create_grid();
 	create_button();
 	populate_window();
+
+	g_timeout_add( 500, drop_control, NULL );
 
 	gtk_main();
 
