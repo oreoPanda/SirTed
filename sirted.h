@@ -1,0 +1,2 @@
+#define GAMEWIDTH 10
+#define GAMEHEIGHT 18
