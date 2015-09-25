@@ -13,29 +13,6 @@
 #define TRUE 1
 #define FALSE 0 
 
-typedef enum
-{
-	BLOCK_t,
-	BLOCK_square,
-	BLOCK_l_normal,
-	BLOCK_line,
-	BLOCK_s,
-	BLOCK_z,
-	BLOCK_l_mirror,
-	BLOCK_max
-}BLOCK;
-
-struct block
-{
-	BLOCK type;
-	unsigned short int pos[2];
-	unsigned short int rotation;
-};
-
-int stuff_that_reached_the_bottom[GAMEWIDTH][GAMEHEIGHT];
-int block_next;
-struct block falling;
-
 
 GtkWidget *window = NULL, *grid = NULL, *button = NULL;
 
