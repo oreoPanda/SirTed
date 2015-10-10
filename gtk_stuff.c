@@ -55,6 +55,14 @@ extern void populate_window(void)
 	return;
 }
 
+extern void connect_drawing_area_events(void)
+{
+	g_signal_connect ( drawing_area, "draw", G_CALLBACK(ready_to_draw), NULL );
+	g_signal_connect ( drawing_area, "configure-event", G_CALLBACK(configure_drawing_area), NULL );
+
+	return;
+}
+
 /*callback functions and event handles*/
 
 static void clear_surface(void)
