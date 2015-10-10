@@ -55,10 +55,17 @@ extern void populate_window(void)
 	return;
 }
 
+static gboolean ready_to_draw( GtkWidget *widget, cairo_t *cr, gpointer data )
+{
+	printf("draw-event!!!\n");
+
+	return G_SOURCE_CONTINUE;
+}
+
 extern void connect_drawing_area_events(void)
 {
-	g_signal_connect ( drawing_area, "draw", G_CALLBACK(ready_to_draw), NULL );
-	g_signal_connect ( drawing_area, "configure-event", G_CALLBACK(configure_drawing_area), NULL );
+	g_signal_connect( drawing_area, "draw", G_CALLBACK(ready_to_draw), NULL );
+	g_signal_connect( drawing_area, "configure-event", G_CALLBACK(configure_drawing_area), NULL );
 
 	return;
 }
@@ -98,7 +105,7 @@ extern gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *ev
 	return TRUE;
 }
 
-//will return FALSE if ready_to_draw has not been called yet
+//will return FALSE if configure_drawing_area has not been called yet
 extern gboolean draw_falling_block(struct block falling)
 {
 	cairo_t *cr;

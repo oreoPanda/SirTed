@@ -16,8 +16,7 @@ extern void populate_window(void);
 extern void connect_drawing_area_events(void);
 
 extern gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *event, gpointer data );
-extern gboolean ready_to_draw( GtkWidget *widget, cairo_t *cr, gpointer data );
 extern gboolean draw_falling_block(struct block falling);
-extern gboolean redraw_falling_block(void);
+extern gboolean erase_falling_block(struct block falling);
 
 #endif	//GTK_STUFF_H
