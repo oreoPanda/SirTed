@@ -1,7 +1,6 @@
 /*window setup*/
 
 #include "gtk_stuff.h"
-#include "sirted.h"
 
 GtkWidget *window = NULL, *grid = NULL, *button = NULL, *drawing_area = NULL;
 static cairo_surface_t *surface = NULL;

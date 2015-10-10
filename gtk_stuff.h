@@ -4,6 +4,7 @@
 #define GTK_STUFF_H
 
 #include <gtk/gtk.h>
+#include "sirted.h"
 
 #define BASE 20
 
