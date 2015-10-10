@@ -1,9 +1,12 @@
 /*window setup*/
 
+#include "gtk_stuff.h"
+#include "sirted.h"
+
 GtkWidget *window = NULL, *grid = NULL, *button = NULL, *drawing_area = NULL;
 static cairo_surface_t *surface = NULL;
 
-void create_window(void)
+extern void create_window(void)
 {
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title( GTK_WINDOW (window), "Window" );
@@ -16,14 +19,14 @@ void create_window(void)
 	return;
 }
 
-void create_grid(void)
+extern void create_grid(void)
 {
 	grid = gtk_grid_new();
 	gtk_widget_show(grid);
 	return;
 }
 
-void create_button(void)
+extern void create_button(void)
 {
 	button = gtk_button_new();
 
@@ -34,7 +37,7 @@ void create_button(void)
 	return;
 }
 
-void create_drawing_area(void)
+extern void create_drawing_area(void)
 {
 	drawing_area = gtk_drawing_area_new();
 
@@ -43,7 +46,7 @@ void create_drawing_area(void)
 	return;
 }
 
-void populate_window(void)
+extern void populate_window(void)
 {
 	gtk_container_add( GTK_CONTAINER(window), grid );
 
@@ -64,12 +67,12 @@ static void clear_surface(void)
 	cairo_set_source_rgb( cr, 1, 1, 1 );
 	cairo_paint(cr);
 
-	cairo_destroy(cr);X
+	cairo_destroy(cr);
 
-	return;Y
+	return;
 }
 
-gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *event, gpointer data )
+extern gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *event, gpointer data )
 {
 	//useless, but it's in the tutorial so I do it!
 	if(surface)
@@ -89,12 +92,12 @@ gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *event, gp
 }
 
 //will return FALSE if ready_to_draw has not been called yet
-gboolean draw_falling_block(void)
+extern gboolean draw_falling_block(struct block falling)
 {
 	cairo_t *cr;
 
-	double x = falling.pos[x] * GAMEWIDTH;
-	double y = falling.pos[y] * GAMEHEIGHT;
+	double x = falling.pos[X] * GAMEWIDTH;
+	double y = falling.pos[Y] * GAMEHEIGHT;
 	double width = BASE;
 	int height = BASE;
 
@@ -113,12 +116,12 @@ gboolean draw_falling_block(void)
 	return TRUE;
 }
 
-gboolean erase_falling_block(void)
+extern gboolean erase_falling_block(struct block falling)
 {
 	cairo_t *cr;
 
-	double x = falling.pos[x] * GAMEWIDTH;
-	double y = falling.pos[y] * GAMEHEIGHT;
+	double x = falling.pos[X] * GAMEWIDTH;
+	double y = falling.pos[Y] * GAMEHEIGHT;
 	double width = BASE;
 	int height = BASE;
 
