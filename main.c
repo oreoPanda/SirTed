@@ -39,34 +39,34 @@ gboolean drop_control(gpointer data)
 	{ 
 		if(first_call == TRUE)
 		{
-			falling.type = rand()%BLOCK_max; 
-			falling.pos[0] = {5};
-			falling.pos[1] = {0}; 
+			falling.type = rand()%BLOCK_number;		
+			falling.pos[0] = 5;
+			falling.pos[1] = 0; 
 			falling.rotation = 0;
 			first_call = FALSE;  	
 		}
 		else
 		{
-			falling.type = block_next; 
-			falling.pos[X] = {5};
-			falling.pos[Y] = {0}; 
+			falling.type = next; 
+			falling.pos[X] = 5;
+			falling.pos[Y] = 0; 
 			falling.rotation = 0; 	
 		}	
 		block_next = rand()%BLOCK_number; 
 	}
 	
-	if (draw_falling_block () == FALSE)
+	if (draw_falling_block (falling) == FALSE)
 	{
 		return G_SOURCE_CONTINUE;
 	} 
 	
-	if (game_area[x_pos][i+1] == 0)
+	if (game_area[falling.pos[X]][i+1] == 0)			//Check below Block, if empty drop Block
 	{
-		falling.pos[Y]++;
+		falling.pos[Y]++;					
  
-		erase_falling_block();
+		erase_falling_block(falling);
 
-		if (draw_falling_block == FALSE) 
+		if (draw_falling_block(falling) == FALSE) 
 		{
 			return G_SOURCE_CONTINUE; 
 		}
