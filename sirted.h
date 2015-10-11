@@ -22,6 +22,4 @@ struct block
 	unsigned short int rotation;
 };
 
-int game_area[GAMEWIDTH][GAMEHEIGHT];
-struct block falling;
-BLOCK next;
+

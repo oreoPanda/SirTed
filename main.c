@@ -10,6 +10,10 @@
 #include "gtk_stuff.h"
 #include "sirted.h"
 
+int game_area[GAMEWIDTH][GAMEHEIGHT];
+struct block falling;
+BLOCK next;
+
 void init_game_area()
 {
 	int x, y;
