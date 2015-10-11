@@ -1,3 +1,6 @@
+#ifndef SIRTED_H
+#define SIRTED_H
+
 #define GAMEWIDTH 10
 #define GAMEHEIGHT 18
 
@@ -22,4 +25,4 @@ struct block
 	unsigned short int rotation;
 };
 
-
+#endif //SIRTED_H

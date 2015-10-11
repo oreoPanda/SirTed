@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "gtk_stuff.h"
+#include "gtk_stuff.h"
+#include "sirted.h"
 #include "sirted.h"
 
 int game_area[GAMEWIDTH][GAMEHEIGHT];
