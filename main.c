@@ -52,7 +52,7 @@ gboolean drop_control(gpointer data)
 			falling.pos[Y] = 0; 
 			falling.rotation = 0; 	
 		}	
-		block_next = rand()%BLOCK_number; 
+		next = rand()%BLOCK_number; 
 	}
 	
 	if (draw_falling_block (falling) == FALSE)
