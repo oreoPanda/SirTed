@@ -90,8 +90,7 @@ int main (int argc, char *argv[])
 	create_drawing_area();
 	populate_window();
 	
-	g_signal_connect (drawing_area, "draw", G_CALLBACK(ready_to_draw), NULL );
-	g_signal_connect ( drawing_area, "configure-event", G_CALLBACK(configure_drawing_area), NULL );
+	connect_drawing_area_events();
 		
 	g_timeout_add( 750, drop_control, NULL );
 
