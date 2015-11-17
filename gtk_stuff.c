@@ -42,6 +42,8 @@ extern void create_drawing_area(void)
 
 	gtk_widget_set_size_request( drawing_area, GAMEWIDTH*BASE, GAMEHEIGHT*BASE );
 
+	gtk_widget_show(drawing_area);
+
 	return;
 }
 
@@ -57,7 +59,8 @@ extern void populate_window(void)
 
 static gboolean ready_to_draw( GtkWidget *widget, cairo_t *cr, gpointer data )
 {
-	printf("draw-event!!!\n");
+	cairo_set_source_surface (cr, surface, 0, 0);
+	cairo_paint (cr);
 
 	return G_SOURCE_CONTINUE;
 }
@@ -122,7 +125,7 @@ extern gboolean draw_falling_block(struct block falling)
 	}
 
 	cr = cairo_create(surface);
-	cairo_set_source_rgb( cr, 0, 0, 0 );
+	cairo_set_source_rgb( cr, 1, 0, 0 );
 	cairo_rectangle( cr, x, y, width, height );
 
 	cairo_destroy(cr);
