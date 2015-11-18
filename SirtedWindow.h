@@ -9,6 +9,7 @@
 #define SIRTEDWINDOW_H_
 
 #include <gtkmm.h>
+#include "Block.h"
 
 #define BASE 20
 
@@ -34,8 +35,8 @@ namespace gamewindow
 		void connect_drawing_area_events(void);
 
 		gboolean configure_drawing_area( GtkWidget *widget, GdkEventConfigure *event, gpointer data );
-		gboolean draw_falling_block(struct block falling);
-		gboolean erase_falling_block(struct block falling);
+		gboolean draw_falling_block(Block block);
+		gboolean erase_falling_block(Block block);
 
 	private:
 

@@ -39,7 +39,7 @@ namespace Block
 		private:
 			BLOCK type;
 			ROTATION rotation;
-			unsigned short int pos[2];
+			unsigned short int position[2];
 
 	};
 }

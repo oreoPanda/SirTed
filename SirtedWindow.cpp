@@ -8,6 +8,8 @@
 #include "sirted.h"
 #include "SirtedWindow.h"
 
+using namespace Block;
+
 namespace gamewindow
 {
 
@@ -52,6 +54,46 @@ namespace gamewindow
 		this->grid.attach( this->drawing_area, 0, 0, 1, 1 );
 
 		return;
+	}
+
+	gboolean SirtedWindow::draw_falling_block(Block block)
+	{
+		switch( block.get_type() )
+		{
+			case BLOCK_t:
+			{
+				break;
+			}
+			case BLOCK_square:
+			{
+				break;
+			}
+			case BLOCK_l_normal:
+			{
+				break;
+			}
+			case BLOCK_line:
+			{
+				break;
+			}
+			case BLOCK_s:
+			{
+				break;
+			}
+			case BLOCK_z:
+			{
+				break;
+			}
+			case BLOCK_l_mirror:
+			{
+				break;
+			}
+			default:
+			{
+				//should not happen
+				break;
+			}
+		}
 	}
 
 } /* namespace gamewindow */

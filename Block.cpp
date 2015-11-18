@@ -23,26 +23,98 @@ namespace Block
 
 	void Block::rotate_right()
 	{
-		if( this->rotation != TWOSEVENTY )
+		switch(this->type)
 		{
-			rotation += 1;
-		}
-		else
-		{
-			this->rotation = NINETY;
+			case BLOCK_t:
+			{
+				switch(this->rotation)
+				{
+					case ZERO:
+					{
+						this->position[Y] -= 1;
+						this->rotation = NINETY;
+						break;
+					}
+					case NINETY:
+					{
+						this->rotation = ONEEIGHTY;
+						break;
+					}
+					case ONEEIGHTY:
+					{
+						this->position[X] += 1;
+						this->rotation = TWOSEVENTY;
+						break;
+					}
+					case TWOSEVENTY:
+					{
+						this->position[X] -= 1;
+						this->position[Y] += 1;
+						this->rotation = ZERO;
+						break;
+					}
+					default:
+					{
+						//this should not happen
+						break;
+					}
+				}
+				break;
+			}
+			default:
+			{
+				//this should not happen
+				break;
+			}
 		}
 		return;
 	}
 
 	void Block::rotate_left()
 	{
-		if( this->rotation != NINETY )
+		switch(this->type)
 		{
-			this->rotation -= 1;
-		}
-		else
-		{
-			this->rotation = TWOSEVENTY;
+			case BLOCK_t:
+			{
+				switch(this->rotation)
+				{
+					case ZERO:
+					{
+						this->position[X] += 1;
+						this->position[Y] -= 1;
+						this->rotation = TWOSEVENTY;
+						break;
+					}
+					case NINETY:
+					{
+						this->position[Y] += 1;
+						this->rotation = ZERO;
+						break;
+					}
+					case ONEEIGHTY:
+					{
+						this->rotation = NINETY;
+						break;
+					}
+					case TWOSEVENTY:
+					{
+						this->position[X] -= 1;
+						this->rotation = ONEEIGHTY;
+						break;
+					}
+					default:
+					{
+						//this should not happen
+						break;
+					}
+				}
+				break;
+			}
+			default:
+			{
+				//this should not happen
+				break;
+			}
 		}
 		return;
 	}
