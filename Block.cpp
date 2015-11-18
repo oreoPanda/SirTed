@@ -61,6 +61,7 @@ namespace Block
 				}
 				break;
 			}
+			/*leaving BLOCK_square out, too simple*/
 			default:
 			{
 				//this should not happen
@@ -110,6 +111,7 @@ namespace Block
 				}
 				break;
 			}
+			/*leaving BLOCK_square out, too simple*/
 			default:
 			{
 				//this should not happen
