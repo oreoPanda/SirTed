@@ -4,13 +4,15 @@
  *  Created on: Sep 18, 2015
  *      Author: i_fly_gliders & Schwarzes Kaeffchen
  */
-#include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include "gtk_stuff.h"
 #include "gtk_stuff.h"
 #include "sirted.h"
 #include "sirted.h"
+
+using namespace std; 
 
 int game_area[GAMEWIDTH][GAMEHEIGHT];
 struct block falling;
