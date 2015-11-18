@@ -1,6 +1,9 @@
 #ifndef BLOCK_H_
 #define BLOCK_H_
 
+#define X 0
+#define Y 1
+
 typedef enum
 {
 	BLOCK_t,
