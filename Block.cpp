@@ -21,6 +21,32 @@ namespace Block
 		return rand() % BLOCK_number;
 	}
 
+	void Block::rotate_right()
+	{
+		if( this->rotation != TWOSEVENTY )
+		{
+			rotation += 1;
+		}
+		else
+		{
+			this->rotation = NINETY;
+		}
+		return;
+	}
+
+	void Block::rotate_left()
+	{
+		if( this->rotation != NINETY )
+		{
+			this->rotation -= 1;
+		}
+		else
+		{
+			this->rotation = TWOSEVENTY;
+		}
+		return;
+	}
+
 	Block::~Block()
 	{
 		cout << "Destroyed block class" << endl;
