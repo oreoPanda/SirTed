@@ -5,11 +5,12 @@
  *      Author: i_fly_gliders & Schwarzes Kaeffchen
  */
 #include <iostream>
-#include "gtk_stuff.h"
+#include "SirtedWindow.h"
 #include "Block.h"
 
 using namespace std; 
-using namespace Block; 
+using namespace Block;
+using namespace gamewindow;
 
 int game_area[GAMEWIDTH][GAMEHEIGHT];
 class block falling;
@@ -128,20 +129,20 @@ int check_if_game_is_over ()
 
 int main (int argc, char *argv[])
 {
-	gtk_init (&argc, &argv);
+	Gtk::Main main_obj(argc, argv);
 
 	init_game_area(); 
 
-	create_window();
-	create_grid();
-	create_button();
-	create_drawing_area();
-	populate_window();
+	SirtedWindow sirtedwindow;
+	sirtedwindow.create_window();
+	sirtedwindow.create_grid();
+	sirtedwindow.create_drawing_area();
+	sirtedwindow.populate_window();
 	
 	connect_drawing_area_events();
 		
 	g_timeout_add( 750, drop_control, NULL );
-	gtk_main();
+	main_obj.run();
 
 	return 0;
 }
