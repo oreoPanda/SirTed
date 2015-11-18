@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Block
 {
-	Block::Block();
+	Block::Block()
 	{
 		cout << "Constructed block class" << endl;
 	}
