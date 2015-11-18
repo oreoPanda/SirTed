@@ -5,17 +5,14 @@
  *      Author: i_fly_gliders & Schwarzes Kaeffchen
  */
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
 #include "gtk_stuff.h"
-#include "gtk_stuff.h"
-#include "sirted.h"
-#include "sirted.h"
+#include "Block.h"
 
 using namespace std; 
+using namespace Block; 
 
 int game_area[GAMEWIDTH][GAMEHEIGHT];
-struct block falling;
+class block falling;
 BLOCK next;
 
 void init_game_area()
@@ -34,11 +31,9 @@ void init_game_area()
 
 gboolean drop_control(gpointer data)
 {
+	Block block_type; 
 	static gboolean first_call = TRUE;
 	int i = 0;  
-	time_t t; 
-	time (&t); 
-	srand ((unsigned int) t);
 	if(falling.pos[1] != 0) 
 	{ 
 		if(first_call == TRUE)
@@ -56,7 +51,7 @@ gboolean drop_control(gpointer data)
 			falling.pos[Y] = 0; 
 			falling.rotation = 0; 	
 		}	
-		next = rand()%BLOCK_number; 
+		next = block_type.BlockType();  
 	}
 	
 	if (draw_falling_block (falling) == FALSE)
@@ -80,6 +75,57 @@ gboolean drop_control(gpointer data)
 	return G_SOURCE_CONTINUE;
 }
 
+int check_for_full_rows () 
+{
+	int single_block_counter = 0, row_counter = 0; 
+	for(int i=GAMEHEIGHT - 1; i>=0; i--)
+	{
+		for(int j=0; j<GAMEWiDTH; j++)
+		{
+			single_block_counter++; 
+			if(a[i][j] == 0) 
+			{
+				single_block_counter = 0; 
+				break; 
+			}
+			else if(a[i][j] != 0 && single_block_counter == GAMEWIDTH) 
+			{
+				for(int k = 0; k < GAMEWIDTH; k++) 
+				{
+					a[i][k] = 0; 
+					row_counter++; 
+				} 
+			}
+		}
+	}
+	return row_counter;
+}
+
+int score(int row_counter)
+{
+	switch (row_counter) 
+	{
+		case 1: return 1; break; 
+		case 2: return 4; break; 
+		case 3: return 8; break; 
+		case 4: return 10;break;
+		default: cout << "An error occured" << endl;  
+	}
+	return 0; 
+}
+
+int check_if_game_is_over () 
+{
+	for(int i = 0; i < GAMEWIDTH; i++)
+	{
+		if(game_area[i][GAMEHEIGHT] != 0) 
+		{
+			return TRUE; 
+		}
+	}
+	return FALSE; 
+}
+
 int main (int argc, char *argv[])
 {
 	gtk_init (&argc, &argv);
@@ -95,8 +141,8 @@ int main (int argc, char *argv[])
 	connect_drawing_area_events();
 		
 	g_timeout_add( 750, drop_control, NULL );
-
 	gtk_main();
 
 	return 0;
 }
+
