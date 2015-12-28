@@ -99,7 +99,7 @@ namespace Block
                         }
                     }
                 }
-                /*rotation cases for BLOCK_l_normal*/
+                /*rotation cases for BLOCK_l_mirror*/
                 case BLOCK_l_mirror:
                 {
                     switch(this->rotation)
