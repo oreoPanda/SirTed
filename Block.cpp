@@ -20,50 +20,129 @@ namespace Block
 
 	void Block::rotate_right()
 	{
-		switch(this->type)
-		{
-			case BLOCK_t:
-			{
-				switch(this->rotation)
-				{
-					case ZERO:
-					{
-						this->position[Y] -= 1;
-						this->rotation = NINETY;
-						break;
-					}
-					case NINETY:
-					{
-						this->rotation = ONEEIGHTY;
-						break;
-					}
-					case ONEEIGHTY:
-					{
-						this->rotation = TWOSEVENTY;
-						break;
-					}
-					case TWOSEVENTY:
-					{
-						this->position[Y] += 1;
-						this->rotation = ZERO;
-						break;
-					}
-					default:
-					{
-						//this should not happen
-						break;
-					}
-				}
-				break;
-			}
-			/*leaving BLOCK_square out, too simple*/
-			default:
-			{
-				//this should not happen
-				break;
-			}
-		}
-		return;
+            switch(this->type)
+            {
+                /*rotation cases for BLOCK_t*/
+                case BLOCK_t:
+                {
+                    switch(this->rotation)
+                    {
+                        case ZERO:
+                        {
+                            this->position[Y] -= 1;
+                            this->rotation = NINETY;
+                            break;
+                        }
+                        case NINETY:
+                        {
+                            this->rotation = ONEEIGHTY;
+                            break;
+                        }
+                        case ONEEIGHTY:
+                        {
+                            this->rotation = TWOSEVENTY;
+                            break;
+                        }
+                        case TWOSEVENTY:
+                        {
+                            this->position[Y] += 1;
+                            this->rotation = ZERO;
+                            break;
+                        }
+                        default:
+                        {
+                            //this should not happen
+                            std::cout << "Error: Invalid rotation value of BLOCK_t!\n";
+                            break;
+                        }
+                    }
+                    break;
+                }
+                /*leaving BLOCK_square out, too simple*/
+                /*rotation cases for BLOCK_l_normal*/
+                case BLOCK_l_normal:
+                {
+                    switch(this->rotation)
+                    {
+                        case ZERO:
+                        {
+                            this->position[X] -= 1;
+                            this->position[Y] -= 1;
+                            this->rotation = NINETY;
+                            break;
+                        }
+                        case NINETY:
+                        {
+                            this->position[X] += 1;
+                            this->position[Y] -= 1;
+                            this->rotation = ONEEIGHTY;
+                            break;
+                        }
+                        case ONEEIGHTY:
+                        {
+                            this->position[X] += 1;
+                            this->position[Y] += 2;
+                            this->rotation = TWOSEVENTY;
+                            break;
+                        }
+                        case TWOSEVENTY:
+                        {
+                            this->position[X] -= 1;
+                            this->rotation = ZERO;
+                            break;
+                        }
+                        default:
+                        {
+                            //this should not happen
+                            std::cout << "Error: Invalid rotation value of BLOCK_l_normal!\n";
+                            break;
+                        }
+                    }
+                }
+                /*rotation cases for BLOCK_l_normal*/
+                case BLOCK_l_mirror:
+                {
+                    switch(this->rotation)
+                    {
+                        case ZERO:
+                        {
+                            this->position[X] -= 1;
+                            break;
+                        }
+                        case NINETY:
+                        {
+                            this->position[X] += 1;
+                            this->position[Y] -= 2;
+                            break;
+                        }
+                        case ONEEIGHTY:
+                        {
+                            this->position[X] += 1;
+                            this->position[Y] += 1;
+                            break;
+                        }
+                        case TWOSEVENTY:
+                        {
+                            this->position[X] -= 1;
+                            this->position[Y] += 1;
+                            break;
+                        }
+                        default:
+                        {
+                            //this should not happen
+                            std::cout << "Error: Invalid rotation value of BLOCK_l_mirror!\n";
+                            break;
+                        }
+                    }
+                }
+                default:
+                {
+                    //this should not happen
+                    std::cout << "Error: Invalid block value!\n";
+                    break;
+                }
+            }
+            return;
 	}
 
 	void Block::rotate_left()
