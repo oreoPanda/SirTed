@@ -17,7 +17,7 @@ namespace Block
 		time_t t;
 		time(&t);
 		srand((unsigned int)t);
-
+                        //TESTING GITHUB INSIDE NETBEANS AND giving a shit about Knorr!!!
 		return rand() % BLOCK_number;
 	}
 
