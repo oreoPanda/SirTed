@@ -32,9 +32,9 @@ namespace Block
         public:
             Block();
 
-            BLOCK BlockType();
-            void rotate_right();
-            void rotate_left();
+            BLOCK BlockType(void);
+            void rotate_right(void);
+            void rotate_left(void);
 
             ~Block();
 
