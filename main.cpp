@@ -124,6 +124,7 @@ int check_if_game_is_over ()
 			return TRUE; 
 		}
 	}
+        //Häääääääääääääääääääääääääää :.(
 	return FALSE; 
 }
 
