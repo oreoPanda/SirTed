@@ -39,13 +39,11 @@ namespace Block
 					}
 					case ONEEIGHTY:
 					{
-						this->position[X] += 1;
 						this->rotation = TWOSEVENTY;
 						break;
 					}
 					case TWOSEVENTY:
 					{
-						this->position[X] -= 1;
 						this->position[Y] += 1;
 						this->rotation = ZERO;
 						break;
