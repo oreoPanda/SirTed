@@ -28,18 +28,20 @@ namespace Block
 {
 	class Block
 	{
-		public:
-			Block();
-			~Block();
+            
+        public:
+            Block();
 
-			BLOCK BlockType();
-			void rotate_right();
-			void rotate_left();
+            BLOCK BlockType();
+            void rotate_right();
+            void rotate_left();
 
-		private:
-			BLOCK type;
-			ROTATION rotation;
-			unsigned short int position[2];
+            ~Block();
+
+        private:
+            BLOCK type;
+            ROTATION rotation;
+            unsigned short int position[2];
 
 	};
 }
