@@ -3,13 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-using namespace std;
-
 namespace Block
 {
 	Block::Block()
 	{
-		cout << "Constructed block class" << endl;
+		std::cout << "Constructed block class" << std::endl;
 	}
 
 	BLOCK Block::BlockType ()
@@ -17,7 +15,6 @@ namespace Block
 		time_t t;
 		time(&t);
 		srand((unsigned int)t);
-                        //TESTING GITHUB INSIDE NETBEANS AND giving a shit about Knorr!!!
 		return rand() % BLOCK_number;
 	}
 
@@ -123,6 +120,6 @@ namespace Block
 
 	Block::~Block()
 	{
-		cout << "Destroyed block class" << endl;
+		std::cout << "Destroyed block class" << std::endl;
 	}
 }
